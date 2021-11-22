@@ -16,6 +16,7 @@ import {
   Text,
   useColorScheme,
   View,
+  NativeModules,
 } from 'react-native';
 
 import {
@@ -58,6 +59,8 @@ const App: () => Node = () => {
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
+
+  console.log('CalendarModule', NativeModules);
 
   return (
     <SafeAreaView style={backgroundStyle}>
