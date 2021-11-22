@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import type {Node} from 'react';
 import {
   SafeAreaView,
@@ -53,6 +53,8 @@ const Section = ({children, title}): Node => {
   );
 };
 
+const {CalendarModule} = NativeModules;
+
 const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
@@ -60,7 +62,11 @@ const App: () => Node = () => {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
-  console.log('CalendarModule', NativeModules);
+  useEffect(() => {
+    setTimeout(() => {
+      CalendarModule.createCalendarEvent('testName', 'testLocation');
+    }, 2000);
+  }, []);
 
   return (
     <SafeAreaView style={backgroundStyle}>
